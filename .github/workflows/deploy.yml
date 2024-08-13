@@ -48,7 +48,7 @@ jobs:
     - uses: actions/upload-artifact@v4
       with:
         name: nodejs
-        path: build
+        path: rdicidr-0.1.0/build
       
   deploy:
     runs-on: ubuntu-latest
