@@ -16,17 +16,17 @@ jobs:
     
     - name: Validate Pull Request
       run: |
-        if [[ "${{ github.base_ref }}" == "devel"]]; then
+        if [[ "${{ github.base_ref }}" == "devel" ]]; then
           if [[ ! "${{ github.head_ref }}" =~ ^(feature|bugfix) ]]; then
             echo "Only allow merges into the devel branch from branches feature/bugfix."
             exit 1
           fi
-        elif [[ "${{ github.base_ref }}" == "stage"]]; then
+        elif [[ "${{ github.base_ref }}" == "stage" ]]; then
           if [[ "${{ github.head_ref }}" != "devel" ]]; then
             echo "Only allow merges into the stage branch from the devel branch"
             exit 1
           fi
-        elif [[ "${{ github.base_ref }}" == "prod"]]; then
+        elif [[ "${{ github.base_ref }}" == "prod" ]]; then
           if [[ "${{ github.head_ref }}" != "stage" ]]; then
             echo "Only allow merges into the prod branch from the stage branch"
             exit 1
