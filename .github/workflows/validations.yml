@@ -22,12 +22,12 @@ jobs:
             exit 1
           fi
         elif [[ "${{ github.base_ref }}" == "stage"]]; then
-          if [[ ! "${{ github.head_ref }}" != "devel" ]]; then
+          if [[ "${{ github.head_ref }}" != "devel" ]]; then
             echo "Only allow merges into the stage branch from the devel branch"
             exit 1
           fi
         elif [[ "${{ github.base_ref }}" == "prod"]]; then
-          if [[ ! "${{ github.head_ref }}" != "stage" ]]; then
+          if [[ "${{ github.head_ref }}" != "stage" ]]; then
             echo "Only allow merges into the prod branch from the stage branch"
             exit 1
           fi
