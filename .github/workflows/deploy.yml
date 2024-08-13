@@ -9,9 +9,9 @@ on:
       - devel
       - stage
       - prod
-  # pull_request:
-  #   branches: 
-  #     - devel
+  pull_request:
+    branches: 
+      - devel
   
 jobs:
   build:

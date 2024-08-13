@@ -10,12 +10,12 @@ resource "aws_s3_bucket_versioning" "fullstack_versioning" {
   }
 }
 
-resource "aws_s3_bucket_ownership_controls" "fullstack_owner" {
-  bucket = aws_s3_bucket.fullstack.id
-  rule {
-    object_ownership = "BucketOwnerPreferred"
-  }
-}
+# resource "aws_s3_bucket_ownership_controls" "fullstack_owner" {
+#   bucket = aws_s3_bucket.fullstack.id
+#   rule {
+#     object_ownership = "BucketOwnerPreferred"
+#   }
+# }
 
 resource "aws_s3_bucket_public_access_block" "fullstack_public_access" {
   bucket = aws_s3_bucket.fullstack.id
@@ -26,12 +26,12 @@ resource "aws_s3_bucket_public_access_block" "fullstack_public_access" {
   restrict_public_buckets = false
 }
 
-resource "aws_s3_bucket_acl" "fullstack_acl" {
-  bucket = aws_s3_bucket.fullstack.id
-  acl    = "public-read"
+# resource "aws_s3_bucket_acl" "fullstack_acl" {
+#   bucket = aws_s3_bucket.fullstack.id
+#   acl    = "public-read"
 
-  depends_on = [aws_s3_bucket_ownership_controls.fullstack_owner, aws_s3_bucket_public_access_block.fullstack_public_access]
-}
+#   depends_on = [aws_s3_bucket_ownership_controls.fullstack_owner, aws_s3_bucket_public_access_block.fullstack_public_access]
+# }
 
 resource "aws_s3_bucket_website_configuration" "fullstack_website_enable" {
   bucket = aws_s3_bucket.fullstack.id
