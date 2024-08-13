@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "fullstack" {
-  bucket = "fullstack-labs-s3-${var.env_tf}"
+  bucket        = "fullstack-labs-s3-${var.env_tf}"
   force_destroy = true
 }
 
@@ -30,7 +30,7 @@ resource "aws_s3_bucket_acl" "fullstack_acl" {
   bucket = aws_s3_bucket.fullstack.id
   acl    = "public-read"
 
-  depends_on = [ aws_s3_bucket_ownership_controls.fullstack_owner,aws_s3_bucket_public_access_block.fullstack_public_access  ]
+  depends_on = [aws_s3_bucket_ownership_controls.fullstack_owner, aws_s3_bucket_public_access_block.fullstack_public_access]
 }
 
 resource "aws_s3_bucket_website_configuration" "fullstack_website_enable" {
