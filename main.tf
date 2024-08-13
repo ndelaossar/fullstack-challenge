@@ -68,8 +68,8 @@ data "aws_iam_policy_document" "fullstack_allow_public_access_policy" {
 
 # Sync Content
 resource "aws_s3_bucket_object" "object" {
-  for_each = fileset("build/","**/*.*")
-  bucket = aws_s3_bucket.fullstack.id
-  key    = each.value
-  source = "build/${each.value}"
+  for_each = fileset("build/", "**/*.*")
+  bucket   = aws_s3_bucket.fullstack.id
+  key      = each.value
+  source   = "build/${each.value}"
 }
